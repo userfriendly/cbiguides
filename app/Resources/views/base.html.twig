@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    {% block javascripts %}
+    <script src="{{ asset( 'assets/js/jquery-1.7.2.min.js' ) }}"></script>
+    {% endblock %}
+  </head>
+  <body>
+    <h1>Sykes CBI Guides</h1>
+    {% block body %}{% endblock %}
+  </body>
 </html>

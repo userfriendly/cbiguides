@@ -1,0 +1,7 @@
+parameters:
+#    sykes_cbi_guide.example.class: Sykes\CBIGuideBundle\Example
+
+services:
+#    sykes_cbi_guide.example:
+#        class: %sykes_cbi_guide.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

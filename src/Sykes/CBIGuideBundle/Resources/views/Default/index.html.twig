@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+  <a class="foo" style="cursor: pointer; text-decoration: underline;">foo</a>
+  
+  <p>Incubator for WGWebsiteBundle</p>
+  <p>Planned features:</p>
+  <ul>
+    <li>Custom dialogue boxes</li>
+    <li>Various custom form elements, e.g. autocomplete</li>
+  </ul>
+  
+  <script>
+    $( document ).ready( function()
+    {
+      $( '.foo' ).click( function()
+      {
+        console.log( 'baa' );
+      });
+    });
+  </script>
+
+{% endblock %}
