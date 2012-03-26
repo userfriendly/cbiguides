@@ -61,3 +61,12 @@
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.1
+
+[WebProfilerExtraBundle]
+    git=http://github.com/Elao/WebProfilerExtraBundle.git
+    target=/bundles/Elao/WebProfilerExtraBundle
+
+[WGWebsiteBundle]
+    git=http://github.com/userfriendly/WGWebsiteBundle.git
+    target=/bundles/WG/WebsiteBundle
+
