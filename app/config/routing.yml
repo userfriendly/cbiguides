@@ -1,8 +1,0 @@
-
-WGWebsiteBundle:
-    resource: "@WGWebsiteBundle/Resources/config/routing.yml"
-    prefix:   /
-
-#SykesCBIGuideBundle:
-#    resource: "@SykesCBIGuideBundle/Resources/config/routing.yml"
-#    prefix:   /

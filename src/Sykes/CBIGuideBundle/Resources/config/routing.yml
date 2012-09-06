@@ -1,3 +1,0 @@
-SykesCBIGuideBundle_homepage:
-    pattern:  /
-    defaults: { _controller: SykesCBIGuideBundle:Default:index }
