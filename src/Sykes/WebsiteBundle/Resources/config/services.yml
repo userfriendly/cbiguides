@@ -1,0 +1,7 @@
+parameters:
+#    sykes_website.example.class: Sykes\WebsiteBundle\Example
+
+services:
+#    sykes_website.example:
+#        class: %sykes_website.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
