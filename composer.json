@@ -1,6 +1,6 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "name": "userfriendly/cbiguides",
+    "description": "Sykes CBI Guides",
     "autoload": {
         "psr-0": { "": "src/" }
     },
