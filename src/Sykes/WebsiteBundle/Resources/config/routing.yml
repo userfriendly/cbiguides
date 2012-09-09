@@ -11,7 +11,3 @@ login_check:
 
 logout:
     pattern:  /logout
-
-tmp:
-    pattern:  /foo
-    defaults: { _controller: SykesWebsiteBundle:Default:createUser }
