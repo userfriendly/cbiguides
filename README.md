@@ -87,7 +87,7 @@ the project root `cbiguides`, run it as follows:
 
 The codebase includes a command to quickly create users. Here are a few examples:
 
-    php app/console sykes:user:create chuck chuckspassword --role=ROLE_USER
+    php app/console sykes:user:create chuck chuckspassword
 
     php app/console sykes:user:create chuck chuckspassword --role=ROLE_ADMIN
 
