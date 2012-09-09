@@ -26,7 +26,7 @@ MySQL 5.5 or higher
 ### Recommended
 
 To be able to follow the installation instructions in this document we
-recommend that you have Git installed and have access to your webspace
+recommend that you have Git installed and have access to your web space
 via Secure Shell (SSH).
 
 While it is also possible to upload a copy of the codebase via FTP, it is
@@ -85,7 +85,7 @@ the project root `cbiguides`, run it as follows:
 
 ### Create users
 
-The codebase includes a command to quickly create users. Here a few examples:
+The codebase includes a command to quickly create users. Here are a few examples:
 
     php app/console sykes:user:create chuck chuckspassword --role=ROLE_USER
 
