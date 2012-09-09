@@ -3,6 +3,8 @@
 namespace Sykes\GuideBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
+use Sykes\GuideBundle\Entity\Level;
 use Sykes\GuideBundle\Entity\Question;
 
 /**
@@ -15,7 +17,7 @@ class Answer
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     */ 
+     */
     protected $id;
     
     /**    
@@ -26,8 +28,14 @@ class Answer
     /**
      * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
-     */    
-    protected $category;
+     */
+    protected $question;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Level")
+     * @ORM\JoinColumn(name="level_id", referencedColumnName="id")
+     */
+    protected $level;
 
     /**
      * Get id
@@ -62,24 +70,46 @@ class Answer
     }
 
     /**
-     * Set category
+     * Set question
      *
-     * @param Sykes\GuideBundle\Entity\Question $category
+     * @param Sykes\GuideBundle\Entity\Question $question
      * @return Answer
      */
-    public function setCategory( Question $category = null )
+    public function setQuestion( Question $question = null )
     {
-        $this->category = $category;
+        $this->question = $question;
         return $this;
     }
 
     /**
-     * Get category
+     * Get question
      *
      * @return Sykes\GuideBundle\Entity\Question 
      */
-    public function getCategory()
+    public function getQuestion()
     {
-        return $this->category;
+        return $this->question;
+    }
+
+    /**
+     * Set level
+     *
+     * @param Sykes\GuideBundle\Entity\Level $level
+     * @return Answer
+     */
+    public function setLevel( Level $level = null )
+    {
+        $this->level = $level;
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return Sykes\GuideBundle\Entity\Level 
+     */
+    public function getLevel()
+    {
+        return $this->level;
     }
 }

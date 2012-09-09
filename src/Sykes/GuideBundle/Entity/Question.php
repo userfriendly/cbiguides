@@ -3,8 +3,10 @@
 namespace Sykes\GuideBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Sykes\GuideBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Sykes\GuideBundle\Entity\Answer;
+use Sykes\GuideBundle\Entity\Category;
 
 /**
  * @ORM\Entity
@@ -16,7 +18,7 @@ class Question
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     */    
+     */
     protected $id;
     
     /**
@@ -27,12 +29,12 @@ class Question
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="questions")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
-     */    
+     */
     protected $category;
 
     /**
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
-     */    
+     */
     protected $answers;
     
     /**
@@ -59,7 +61,7 @@ class Question
      * @param string $question
      * @return Question
      */
-    public function setQuestion($question)
+    public function setQuestion( $question )
     {
         $this->question = $question;
     
