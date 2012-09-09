@@ -43,11 +43,11 @@ Apache, but again, we do not recommend that as this website makes use of an
 
 ### Get the code
 
-Log on to your server using SSH and clone the code repository
+Log on to your server using SSH and clone the code repository:
 
     git clone git://github.com/userfriendly/cbiguides.git
 
-This will create a directory cbiguides, containing a subfolder `web`. It is that
+This will create a directory `cbiguides`, containing a subfolder `web`. It is that
 `web` folder that your web server needs to point to in the VirtualHost definition.
 
 ### Configuration
