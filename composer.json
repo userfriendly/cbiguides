@@ -36,7 +36,7 @@
     },
     "config": {
         "bin-dir": "bin",
-        "vendor-dir": "vendor_2.1"
+        "vendor-dir": "vendor"
     },
     "minimum-stability": "dev",
     "extra": {

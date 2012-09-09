@@ -6,21 +6,10 @@ parameters:
     database_user:     root
     database_password: ~
 
-    mailer_transport:  smtp
+    mailer_transport:  sendmail
     mailer_host:       localhost
     mailer_user:       ~
     mailer_password:   ~
 
-    oauth_client_id_github: ~
-    oauth_client_secret_github: ~
-
-    oauth_client_id_google: ~
-    oauth_client_secret_google: ~
-
-    oauth_client_id_facebook: ~
-    oauth_client_secret_facebook: ~
-
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
-
-    website.domain:    'example.com'
