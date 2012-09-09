@@ -5,7 +5,6 @@ namespace Sykes\WebsiteBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="websiteuser")
@@ -42,7 +41,7 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->roles = new ArrayCollection();
+        $this->roles = array();
         $this->salt = md5( uniqid( null, true ) );
     }
 
@@ -128,7 +127,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return $this->roles;
     }
     
     /**
