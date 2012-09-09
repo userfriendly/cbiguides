@@ -76,6 +76,13 @@ the project root `cbiguides`, run it as follows:
 
     php app/console doctrine:schema:update --force
 
+### Install public assets to web directory
+
+    php app/console assets:install web --symlink
+
+Note: if your server runs Windows instead of Linux, leave off the `--symlink`
+parameter.
+
 
 3) Maintenance
 --------------
