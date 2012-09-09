@@ -69,6 +69,13 @@ follows:
 
 This will pull all required vendor libraries into the `vendor` subfolder.
 
+### Install public assets to web directory
+
+    php app/console assets:install web --symlink
+
+Note: if your server runs Windows instead of Linux, leave off the `--symlink`
+parameter.
+
 ### Create the database tables
 
 Symfony offers a simple command to create the required database tables. From
@@ -76,12 +83,15 @@ the project root `cbiguides`, run it as follows:
 
     php app/console doctrine:schema:update --force
 
-### Install public assets to web directory
+### Create users
 
-    php app/console assets:install web --symlink
+The codebase includes a command to quickly create users. Here a few examples:
 
-Note: if your server runs Windows instead of Linux, leave off the `--symlink`
-parameter.
+    php app/console sykes:user:create chuck chuckspassword --role=ROLE_USER
+
+    php app/console sykes:user:create chuck chuckspassword --role=ROLE_ADMIN
+
+    php app/console sykes:user:create chuck chuckspassword --role=ROLE_SUPER_ADMIN
 
 
 3) Maintenance
