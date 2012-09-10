@@ -69,6 +69,24 @@ follows:
 
 This will pull all required vendor libraries into the `vendor` subfolder.
 
+### Setting up permissions
+
+Make sure that the cache and logs folders are writable by the web server.
+For example, on Linux one of the two following methods should work. These
+examples assume that your web server is running under a user account called
+`www-data` (change `www-data` to the correct user if this is different on
+your machine).
+
+1. Using ACL on a system that supports chmod +a
+
+    sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+    sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+
+2. Using ACL on a system that does not support chmod +a
+
+    sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+    sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+
 ### Install public assets to web directory
 
     php app/console assets:install web --symlink
