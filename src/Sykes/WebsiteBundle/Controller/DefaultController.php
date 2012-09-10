@@ -6,8 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
 
-use Sykes\WebsiteBundle\Entity\User;
-
 class DefaultController extends Controller
 {
     public function indexAction()
