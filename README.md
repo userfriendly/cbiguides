@@ -80,12 +80,17 @@ your machine).
 1. Using ACL on a system that supports chmod +a
 
     sudo chmod +a "www-data allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
-    sudo chmod +a "`whoami` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
+
+    sudo chmod +a "\`whoami\` allow delete,write,append,file_inherit,directory_inherit" app/cache app/logs
 
 2. Using ACL on a system that does not support chmod +a
 
-    sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
-    sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+    sudo setfacl -R -m u:www-data:rwx -m u:\`whoami\`:rwx app/cache app/logs
+
+    sudo setfacl -dR -m u:www-data:rwx -m u:\`whoami\`:rwx app/cache app/logs
+
+Note: if you are reading this file in plaintext format, remove the backslashes
+from these commands, as they are only used to escape the \` backticks.
 
 ### Install public assets to web directory
 
