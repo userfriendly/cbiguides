@@ -1,0 +1,15 @@
+level_list:
+    pattern:  /levels
+    defaults: {_controller: SykesGuideBundle:Level:index}
+    
+level_delete:
+    pattern:  /delete_level/{id}
+    defaults: {_controller: SykesGuideBundle:Level:delete}
+    
+category_list:
+    pattern:  /categories
+    defaults: {_controller: SykesGuideBundle:Category:index}
+    
+category_delete:
+    pattern:  /category_level/{id}
+    defaults: {_controller: SykesGuideBundle:Category:delete}

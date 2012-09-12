@@ -28,6 +28,11 @@ class Category
      * @ORM\OneToMany(targetEntity="Question", mappedBy="category")
      */
     protected $questions;
+    
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $description;
 
     /**
      * Get id
@@ -100,5 +105,27 @@ class Category
     public function getQuestions()
     {
         return $this->questions;
+    }
+    
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Level
+     */
+    public function setDescription( $description )
+    {
+        $this->description = $description;
+        return $this;
+    }
+    
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

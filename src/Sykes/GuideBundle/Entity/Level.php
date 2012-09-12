@@ -23,6 +23,11 @@ class Level
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $description;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -52,5 +57,27 @@ class Level
     public function getName()
     {
         return $this->name;
+    }
+    
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Level
+     */
+    public function setDescription( $description )
+    {
+        $this->description = $description;
+        return $this;
+    }
+    
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

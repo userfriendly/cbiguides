@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for level in levels %}
+    <tr>
+        <td>{{ level.name }}</td>
+        <td>{{ level.description }}</td>
+        <td>[ <a href="{{ path( 'level_delete', { 'id': level.id } ) }}">delete</a> ]</td>
+        <td>[ <a href="{{ path( 'level_list', { 'id': level.id } ) }}">edit</a> ]</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="4">
+            <p>Nothin yet dude</p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="{{ path('level_list') }}" method="post" {{ form_enctype(form) }}>
+        {% if level.id %}
+            <input type="hidden" name="id" value="{{ level.id }}" />
+        {% endif %}
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+</form>
+
+{% endblock %}
