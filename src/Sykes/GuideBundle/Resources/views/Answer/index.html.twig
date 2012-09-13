@@ -4,17 +4,17 @@
 
 <table>
     <tr>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Answer</th>
+        <th>Level</th>
         <th></th>
         <th></th>
     </tr>
-    {% for category in categories %}
+    {% for answer in answers %}
     <tr>
-        <td>{{ category.name }}</td>
-        <td>{{ category.description }}</td>
-        <td>[ <a href="{{ path( 'category_delete', { 'id': category.id } ) }}">delete</a> ]</td>
-        <td>[ <a href="{{ path( 'category_list', { 'id': category.id } ) }}">edit</a> ]</td>
+        <td>{{ answer.answer }}</td>
+        <td>{{ answer.level }}</td>
+        <td>[ <a href="{{ path( 'answer_delete', { 'id': answer.id } ) }}">delete</a> ]</td>
+        <td>[ <a href="{{ path( 'answer_list', { 'id': answer.id } ) }}">edit</a> ]</td>
     </tr>
     {% else %}
     <tr>
@@ -25,9 +25,9 @@
     {% endfor %}
 </table>
 
-<form action="{{ path('category_list') }}" method="post" {{ form_enctype(form) }}>
-        {% if category.id %}
-            <input type="hidden" name="id" value="{{ category.id }}" />
+<form action="{{ path('answer_list') }}" method="post" {{ form_enctype(form) }}>
+        {% if answer.id %}
+            <input type="hidden" name="id" value="{{ answer.id }}" />
         {% endif %}
         {{ form_widget(form) }}
 

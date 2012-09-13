@@ -4,9 +4,6 @@ namespace Sykes\GuideBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-use Sykes\GuideBundle\Entity\Level;
-use Sykes\GuideBundle\Entity\Question;
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="answer")

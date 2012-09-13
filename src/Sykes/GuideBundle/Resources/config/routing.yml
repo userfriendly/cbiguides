@@ -11,5 +11,13 @@ category_list:
     defaults: {_controller: SykesGuideBundle:Category:index}
     
 category_delete:
-    pattern:  /category_level/{id}
+    pattern:  /delete_category/{id}
     defaults: {_controller: SykesGuideBundle:Category:delete}
+
+answer_list:
+    pattern:  /answers
+    defaults: {_controller: SykesGuideBundle:Answer:index}
+    
+answer_delete:
+    pattern:  /delete_answer/{id}
+    defaults: {_controller: SykesGuideBundle:Answer:delete}

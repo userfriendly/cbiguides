@@ -18,8 +18,10 @@ class LevelController extends Controller
         $repo = $em->getRepository( 'SykesGuideBundle:Level' );
         // Get all level entities
         $levels = $repo->findAll();
-        // Form processing
-        if ( null !== $levelId = $request->get( 'id' ) )
+        
+        // check if any ID is passed
+        $levelId = $request->get( 'id' );
+        if ( null !==  $levelId)
         {
             $level = $repo->find( $levelId );
         }
@@ -27,6 +29,8 @@ class LevelController extends Controller
         {
             $level = new Level();
         }
+        
+        // form processing
         $form = $this->createForm( new LevelType(), $level );
         if ( $request->getMethod() == 'POST' )
         {

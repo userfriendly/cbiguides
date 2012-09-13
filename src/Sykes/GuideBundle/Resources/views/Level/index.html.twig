@@ -4,6 +4,7 @@
 
 <table>
     <tr>
+        <th>id</th>
         <th>Name</th>
         <th>Description</th>
         <th></th>
@@ -11,6 +12,7 @@
     </tr>
     {% for level in levels %}
     <tr>
+        <td>{{ level.id }}</td>
         <td>{{ level.name }}</td>
         <td>{{ level.description }}</td>
         <td>[ <a href="{{ path( 'level_delete', { 'id': level.id } ) }}">delete</a> ]</td>
@@ -18,7 +20,7 @@
     </tr>
     {% else %}
     <tr>
-        <td colspan="4">
+        <td colspan="5">
             <p>Nothin yet dude</p>
         </td>
     </tr>
