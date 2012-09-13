@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for category in categories %}
+    <tr>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td>[ <a href="{{ path( 'category_delete', { 'id': category.id } ) }}">delete</a> ]</td>
+        <td>[ <a href="{{ path( 'category_list', { 'id': category.id } ) }}">edit</a> ]</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="4">
+            <p>Nothin yet dude</p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="{{ path('category_list') }}" method="post" {{ form_enctype(form) }}>
+        {% if category.id %}
+            <input type="hidden" name="id" value="{{ category.id }}" />
+        {% endif %}
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+</form>
+
+{% endblock %}
