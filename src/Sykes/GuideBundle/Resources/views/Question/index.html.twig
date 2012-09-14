@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<table>
+    <tr>
+        <th>Question</th>
+        <th>Category</th>
+        <th></th>
+        <th></th>
+        <th>Answer</th>
+    </tr>
+    {% for question in questions %}
+    <tr>
+        <td>{{ question.question }}</td>
+        <td>{{ question.category }}</td>
+        <td>[ <a href="{{ path( 'question_delete', { 'id': question.id } ) }}">delete</a> ]</td>
+        <td>[ <a href="{{ path( 'question_list', { 'id': question.id } ) }}">edit</a> ]</td>
+        <td>[ <a href="{{ path( 'question_view', { 'id': question.id } ) }}">view</a> ]</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="5">
+            <p>Nothin yet dude</p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<form action="{{ path('question_list') }}" method="post" {{ form_enctype(form) }}>
+        {% if question.id %}
+            <input type="hidden" name="id" value="{{ question.id }}" />
+        {% endif %}
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+</form>
+
+{% endblock %}

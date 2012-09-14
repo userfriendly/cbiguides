@@ -109,4 +109,9 @@ class Answer
     {
         return $this->level;
     }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

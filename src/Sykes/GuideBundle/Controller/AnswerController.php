@@ -11,57 +11,51 @@ use Sykes\GuideBundle\Form\Type\AnswerType;
 class AnswerController extends Controller
 {
 
-    public function indexAction( Request $request )
-    {
-        // Get entity manager
-        $em = $this->getDoctrine()->getEntityManager();
-        $repo = $em->getRepository( 'SykesGuideBundle:Answer' );
-        // Get all answer entities
-        $answers = $repo->findAll();
-        
-        // checking for passed ID
-        $answerId = $request->get( 'id' );
-        if ( null !== $answerId )
-        {
-            $answer = $repo->find( $answerId );
-        }
-        else
-        {
-            $answer = new Answer();
-        }
-        
-        // Form processing
-        $form = $this->createForm( new AnswerType(), $answer );
-        if ( $request->getMethod() == 'POST' )
-        {
-            $form->bind( $request );
-            if ( $form->isValid() )
-            {
-                $em->persist( $answer );
-                $em->flush();
-                return $this->redirect( $this->generateUrl( 'answer_list' ) );
-            }
-        }
-        // Response
-        return $this->render( 'SykesGuideBundle:Answer:index.html.twig', array(
-                    'answer' => $answer,
-                    'answers' => $answers,
-                    'form' => $form->createView(),
-                ) );
-    }
-
     // delete answer
     public function deleteAction( Request $request )
     {
+        $flashMessages = $request->getSession()->getFlashBag()->get( 'questionId' );
+        $questionId = count( $flashMessages ) > 0 ? $flashMessages[0] : null;
         $em = $this->getDoctrine()->getEntityManager();
         $repo = $em->getRepository( 'SykesGuideBundle:Answer' );
         $answer = $repo->find( $request->get( 'id' ) );
-        if ( null !== $answer )
+        if ( null === $answer )
+        {
+            $this->createNotFoundException( 'Question not found' );
+        }
+        else
         {
             $em->remove( $answer );
             $em->flush();
         }
-        return $this->redirect( $this->generateUrl( 'answer_list' ) );
+        return $this->redirect( $this->generateUrl( 'question_view', array( 'id' => $questionId ) ) );
     }
 
+    // edit answer
+    public function editAction( Request $request )
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repo = $em->getRepository( 'SykesGuideBundle:Answer' );
+        $answer = $repo->find( $request->get( 'id' ) );
+        if ( !$answer ) $answer = new Answer();
+        $form = $this->createForm( new AnswerType(), $answer );
+        if ( $request->getMethod() == 'POST' )
+        {
+            $flashMessages = $request->getSession()->getFlashBag()->get( 'questionId' );
+            $questionId = count( $flashMessages ) > 0 ? $flashMessages[0] : null;
+            $form->bind( $request );
+            if ( $form->isValid() )
+            {
+                $question = $em->getRepository( 'SykesGuideBundle:Question' )->find( $questionId );
+                $answer->setQuestion( $question );
+                $em->persist( $answer );
+                $em->flush();
+                return $this->redirect( $this->generateUrl( 'question_view', array( 'id' => $questionId ) ) );
+            }
+        }
+        return $this->render( 'SykesGuideBundle:Answer:edit.html.twig', array(
+            'answer' => $answer,
+            'form' => $form->createView(),
+        ));
+    }
 }

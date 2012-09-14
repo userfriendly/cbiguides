@@ -2,6 +2,8 @@
 
 {% block body %}
 
+<p>{{ question.question }} ({{ question.category }})</p>
+
 <table>
     <tr>
         <th>Answer</th>
@@ -9,29 +11,22 @@
         <th></th>
         <th></th>
     </tr>
-    {% for answer in answers %}
+    {% for answer in question.answers %}
     <tr>
         <td>{{ answer.answer }}</td>
         <td>{{ answer.level }}</td>
         <td>[ <a href="{{ path( 'answer_delete', { 'id': answer.id } ) }}">delete</a> ]</td>
-        <td>[ <a href="{{ path( 'answer_list', { 'id': answer.id } ) }}">edit</a> ]</td>
+        <td>[ <a href="{{ path( 'question_edit_answer', { 'id': question.id, 'answer_id': answer.id } ) }}">edit</a> ]</td>
     </tr>
     {% else %}
     <tr>
         <td colspan="4">
-            <p>Nothin yet dude</p>
+            <p>This question does not have any answers defined yet.</p>
         </td>
     </tr>
     {% endfor %}
 </table>
 
-<form action="{{ path('answer_list') }}" method="post" {{ form_enctype(form) }}>
-        {% if answer.id %}
-            <input type="hidden" name="id" value="{{ answer.id }}" />
-        {% endif %}
-        {{ form_widget(form) }}
-
-        <input type="submit" />
-</form>
+{% render 'SykesGuideBundle:Answer:edit' with { 'id': answerId } %}
 
 {% endblock %}

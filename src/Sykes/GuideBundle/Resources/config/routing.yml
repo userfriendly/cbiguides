@@ -1,23 +1,39 @@
+level_delete:
+    pattern:  /levels/{id}/delete
+    defaults: {_controller: SykesGuideBundle:Level:delete}
+    
 level_list:
     pattern:  /levels
     defaults: {_controller: SykesGuideBundle:Level:index}
     
-level_delete:
-    pattern:  /delete_level/{id}
-    defaults: {_controller: SykesGuideBundle:Level:delete}
+category_delete:
+    pattern:  /categories/{id}/delete
+    defaults: {_controller: SykesGuideBundle:Category:delete}
     
 category_list:
     pattern:  /categories
     defaults: {_controller: SykesGuideBundle:Category:index}
     
-category_delete:
-    pattern:  /delete_category/{id}
-    defaults: {_controller: SykesGuideBundle:Category:delete}
-
-answer_list:
-    pattern:  /answers
-    defaults: {_controller: SykesGuideBundle:Answer:index}
-    
 answer_delete:
-    pattern:  /delete_answer/{id}
+    pattern:  /answers/{id}/delete
     defaults: {_controller: SykesGuideBundle:Answer:delete}
+
+answer_edit:
+    pattern:  /answers/{id}/edit
+    defaults: {_controller: SykesGuideBundle:Answer:edit}
+    
+question_delete:
+    pattern:  /questions/{id}/delete
+    defaults: {_controller: SykesGuideBundle:Question:delete}
+    
+question_edit_answer:
+    pattern:  /questions/{id}/edit-answer/{answer_id}
+    defaults: {_controller: SykesGuideBundle:Question:view}
+    
+question_view:
+    pattern:  /questions/{id}
+    defaults: {_controller: SykesGuideBundle:Question:view}
+    
+question_list:
+    pattern:  /questions
+    defaults: {_controller: SykesGuideBundle:Question:index}
