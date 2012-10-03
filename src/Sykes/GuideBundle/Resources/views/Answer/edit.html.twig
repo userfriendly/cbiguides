@@ -1,8 +1,8 @@
-{% extends '::base.html.twig' %}
+{#{% extends '::base.html.twig' %}#}
 
 {% block body %}
 
-<form action="{{ path('answer_edit', { 'id': answer.id }) }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('answer_edit', { 'id': id is defined ? id : answer.id }) }}" method="post" {{ form_enctype(form) }}>
         {% if answer.id %}
             <input type="hidden" name="id" value="{{ answer.id }}" />
         {% endif %}

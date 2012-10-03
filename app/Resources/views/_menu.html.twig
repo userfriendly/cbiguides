@@ -1,0 +1,10 @@
+<div id="sidebar">
+    {% block sidebar %}
+    <ul>
+        <li><a href="{{ path( 'home' ) }}">Home</a></li>
+        <li><a href="{{ path( 'category_list' ) }}">Categories</a></li>
+        <li><a href="{{ path( 'question_list' ) }}">Questions</a></li>
+        <li><a href="{{ path( 'level_list' ) }}">Levels</a></li>
+    </ul>
+    {% endblock %}
+</div>

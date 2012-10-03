@@ -19,6 +19,7 @@ class AnswerController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $repo = $em->getRepository( 'SykesGuideBundle:Answer' );
         $answer = $repo->find( $request->get( 'id' ) );
+        
         if ( null === $answer )
         {
             $this->createNotFoundException( 'Question not found' );
@@ -28,6 +29,7 @@ class AnswerController extends Controller
             $em->remove( $answer );
             $em->flush();
         }
+        
         return $this->redirect( $this->generateUrl( 'question_view', array( 'id' => $questionId ) ) );
     }
 
@@ -37,13 +39,17 @@ class AnswerController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $repo = $em->getRepository( 'SykesGuideBundle:Answer' );
         $answer = $repo->find( $request->get( 'id' ) );
-        if ( !$answer ) $answer = new Answer();
+        
+        if ( !$answer )
+            $answer = new Answer();
         $form = $this->createForm( new AnswerType(), $answer );
+        
         if ( $request->getMethod() == 'POST' )
         {
             $flashMessages = $request->getSession()->getFlashBag()->get( 'questionId' );
             $questionId = count( $flashMessages ) > 0 ? $flashMessages[0] : null;
             $form->bind( $request );
+            
             if ( $form->isValid() )
             {
                 $question = $em->getRepository( 'SykesGuideBundle:Question' )->find( $questionId );
@@ -53,7 +59,9 @@ class AnswerController extends Controller
                 return $this->redirect( $this->generateUrl( 'question_view', array( 'id' => $questionId ) ) );
             }
         }
+        
         return $this->render( 'SykesGuideBundle:Answer:edit.html.twig', array(
+            'id' => $request->get( 'id' ),
             'answer' => $answer,
             'form' => $form->createView(),
         ));

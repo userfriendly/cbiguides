@@ -9,6 +9,10 @@ level_list:
 category_delete:
     pattern:  /categories/{id}/delete
     defaults: {_controller: SykesGuideBundle:Category:delete}
+
+category_edit:
+    pattern:  /categories/{id}/edit
+    defaults: {_controller: SykesGuideBundle:Category:index}
     
 category_list:
     pattern:  /categories
@@ -29,7 +33,11 @@ question_delete:
 question_edit_answer:
     pattern:  /questions/{id}/edit-answer/{answer_id}
     defaults: {_controller: SykesGuideBundle:Question:view}
-    
+
+question_edit:
+    pattern:  /questions/{id}/edit
+    defaults: {_controller: SykesGuideBundle:Question:index}
+
 question_view:
     pattern:  /questions/{id}
     defaults: {_controller: SykesGuideBundle:Question:view}

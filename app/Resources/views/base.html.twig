@@ -2,11 +2,18 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}CBI Guides{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body>      
+        <p>Username: {{ app.user.username is defined ? app.user.username : 'not define' }}</p>
+        {% if app.debug %}
+            <p>Request method: {{ app.request.method }}</p>
+            <p>Application Environment: {{ app.environment }}</p>
+        {% endif %}
+        
+        {% include '::_menu.html.twig' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

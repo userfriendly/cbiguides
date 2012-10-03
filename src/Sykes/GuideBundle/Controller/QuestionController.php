@@ -73,7 +73,7 @@ class QuestionController extends Controller
         {
             $this->createNotFoundException( 'Question not found' );
         }
-        $answerId = $request->get( 'answer_id' ) ? $request->get( 'answer_id' ) : 0;
+        $answerId = $request->get( 'answer_id' ) ?: '0';
         return $this->render( 'SykesGuideBundle:Question:view.html.twig', array(
                     'question' => $question,
                     'answerId' => $answerId,

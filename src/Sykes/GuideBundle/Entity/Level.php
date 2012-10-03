@@ -1,5 +1,20 @@
 <?php
 
+/***
+ * 
+ * This is a level of competences, or difficulties for the expected answer:
+ * 
+ *      a candidate might be asked for how knowledgeable he is with website
+ *      but the expected answer could be one of the following depending on the
+ *      level:
+ * 
+ *      - an interface for communicating between customer and companies on the 
+ *          internet;
+ *      - a piece of software used to convey information for a entity and served
+ *          via the internet and rendered through a web-browser
+ * 
+ */
+
 namespace Sykes\GuideBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
